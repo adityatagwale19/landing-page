@@ -1,75 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landing page</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <img src="images/logo.png" class="logo" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeltaVi | Launching Soon</title>
+    <meta name="description" content="DeltaVi is under maintenance and launching soon. See the countdown and leave your email to hear when we go live.">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div class="page">
+        <header class="site-header">
+            <img src="images/logo.png" class="logo" alt="DeltaVi" width="137" height="42">
+        </header>
 
-      <div class="content">
-        <p>Website is in maintanance</p>
-        <h1>We're <span>Launching</span> Soon..</h1>
-        <div class="launch-time">
-          <div>
-            <p id="days">00</p>
-            <span>days</span>
-          </div>
-          <div>
-            <p id="hours">00</p>
-            <span>hours</span>
-          </div>
-          <div>
-            <p id="minutes">00</p>
-            <span>minutes</span>
-          </div>
-          <div>
-            <p id="seconds">00</p>
-            <span>seconds</span>
-          </div>
-        </div>
-        <button type="button">
-          learn more <img src="images/triangle.png" />
-        </button>
-      </div>
-      <img src="images/rocket.png" class="rocket" />
+        <main class="hero">
+            <section class="content" aria-labelledby="heroTitle">
+                <p class="eyebrow">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    Website is under maintenance
+                </p>
+                <h1 id="heroTitle">We're <span>Launching</span> Soon</h1>
+                <p class="launch-date" id="launchDate">Counting down to launch day.</p>
+
+                <div class="launch-time" id="countdown" role="timer" aria-label="Time left until launch">
+                    <div class="time-box">
+                        <p class="time-value" id="days">00</p>
+                        <span class="time-label">days</span>
+                    </div>
+                    <div class="time-box">
+                        <p class="time-value" id="hours">00</p>
+                        <span class="time-label">hours</span>
+                    </div>
+                    <div class="time-box">
+                        <p class="time-value" id="minutes">00</p>
+                        <span class="time-label">minutes</span>
+                    </div>
+                    <div class="time-box">
+                        <p class="time-value" id="seconds">00</p>
+                        <span class="time-label">seconds</span>
+                    </div>
+                </div>
+
+                <form class="notify-form" id="notifyForm" novalidate>
+                    <label class="notify-label" for="email">Get an email when we go live</label>
+                    <div class="notify-row">
+                        <input class="notify-input" type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" aria-describedby="formMessage" required>
+                        <button class="notify-button" type="submit">
+                            Notify me <img src="images/triangle.png" alt="" width="12" height="14">
+                        </button>
+                    </div>
+                    <p class="form-message" id="formMessage" aria-live="polite"></p>
+                </form>
+            </section>
+
+            <img src="images/rocket.png" class="rocket" alt="Outline of a rocket taking off" width="391" height="419">
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; <span id="year">2026</span> DeltaVi. All rights reserved.</p>
+        </footer>
     </div>
-
-    <script>
-      // count down to the next 1 April so the timer never sits on a past date
-      let today = new Date();
-      let launch = new Date(today.getFullYear(), 3, 1);
-      if (launch <= today) {
-        launch = new Date(today.getFullYear() + 1, 3, 1);
-      }
-      let countDownDate = launch.getTime();
-      let x = setInterval(function () {
-        let now = new Date().getTime();
-        let distance = countDownDate - now;
-
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("days").innerHTML = days;
-        document.getElementById("hours").innerHTML = hours;
-        document.getElementById("minutes").innerHTML = minutes;
-        document.getElementById("seconds").innerHTML = seconds;
-
-        if (distance < 0) {
-          clearInterval(x);
-          document.getElementById("days").innerHTML = "00";
-          document.getElementById("hours").innerHTML = "00";
-          document.getElementById("minutes").innerHTML = "00";
-          document.getElementById("seconds").innerHTML = "00";
-        }
-      }, 1000);
-    </script>
-  </body>
+</body>
 </html>
